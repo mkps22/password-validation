@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <style>
+    .check{
+        margin-top: 2%;
+        margin-left: 3%;
+        font-size: 30px;
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+    }
+    input{
+        width: 40%;
+        height: 10vh;
+        font-size: 25px;
+        outline: 0px;
+    }
+   </style>
+</head>
+<h1></h1>
+    <input type="password" id="t1" onkeyup="fun(this)" onfocus="fun2()" onblur="fun3()" placeholder="Enter Password">
+    <div class="check">
+        <div>1.1st letter capital letter</div>
+        <div>2.one small letter</div>
+        <div>3.one digit</div>
+        <div>4.one special symbol (#,$,%,&)</div>
+        <div>5.Spaces are not allowed</div>
+        <div>6.Should of max 8 charactors</div>
+
+    </div>
+
+
+
+    <script>
+        let ch=document.querySelectorAll(".check div")
+        ch[4].style.color="green"
+        function fun(e){
+            let data=e.value
+            if(/^[A-Z]/.test(data)){
+                ch[0].style.color="green"
+            }
+            else{
+                ch[0].style.color="red"
+            }
+            if(/[a-z]+/.test(data)){
+                ch[1].style.color="green"
+            }
+            else{
+                ch[1].style.color="red"
+            }
+            if(/[0-9]+/.test(data)){
+                ch[2].style.color="green"
+            }
+            else{
+                ch[2].style.color="red"
+            }
+            if(/[#$%&]+/.test(data)){
+                ch[3].style.color="green"
+            }
+            else{
+                ch[3].style.color="red"
+            }
+            if(/\s+/.test(data)){
+                ch[4].style.color="red"
+            }
+            else{
+                ch[4].style.color="green"
+            }
+            if(data.length>=8){
+                ch[5].style.color="green"
+
+            }
+            else{
+                ch[5].style.color="red"
+            }
+    }
+    let h=document.getElementsByTagName("h1")[0]
+    let r=document.getElementById("t1")
+    function fun2(){
+        r.innerHTML="type your password"
+        r.style.background="grey"
+        h.innerHTML="Password Validatoin"
+    }
+    function fun3(){
+        h.innerHTML=""
+        r.value=""
+    }
+    function fun4(){
+        alert("Please fill the password")
+    }
+    setTimeout(fun4,1000)
+       
+    </script>
+</body>
+</html>
